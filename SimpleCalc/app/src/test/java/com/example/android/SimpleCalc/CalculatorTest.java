@@ -25,6 +25,7 @@ import org.junit.runners.JUnit4;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -51,6 +52,24 @@ public class CalculatorTest {
     public void addTwoNumbers() {
         double resultAdd = mCalculator.add(1d, 1d);
         assertThat(resultAdd, is(equalTo(2d)));
+    }
+    @Test
+    public void addTwoNegativeNumbers(){
+        double resultAdd=mCalculator.add(-2d,-2d);
+        assertThat(resultAdd,is(equalTo(-4d)));
+    }
+    @Test
+    public void addTwoNumbersFloats() {
+        double resultAdd = mCalculator.add(1.111f, 1.111d);
+        assertThat(resultAdd, is(closeTo(2.222, 0.01)));
+
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void divByZeroThrows(){
+        double resultDiv=mCalculator.div(1d,0);
+        assertThat(resultDiv,is(equalTo(resultDiv)));
+
+
     }
 
 

@@ -138,6 +138,11 @@ public class MainActivity extends Activity {
      * @return the operand text which was entered in an EditText.
      */
     private static String getOperandText(EditText operandEditText) {
-        return operandEditText.getText().toString();
+        if(!operandEditText.getText().toString().isEmpty()) {
+            return operandEditText.getText().toString();
+        }else {
+            System.out.println("test");
+            return "0";
+        }
     }
 }
